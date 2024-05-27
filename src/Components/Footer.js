@@ -1,6 +1,6 @@
 import React from 'react'
 import { footer } from '../Data/Data'
-import logo from "../assets/logo-2.png"
+import focuslogo from "../assets/Logo-Dark.png"
 
 import {BiLogoFacebook} from "react-icons/bi"
 import {BsTwitter} from "react-icons/bs"
@@ -31,8 +31,8 @@ const Footer = ({nav}) => {
 
         <div>
           <a href="#home" className=' font-semibold text-5xl flex items-center gap-1 text-white'>
-            <img src={logo} alt="logo" width={60} height={60}/>
-            FITNESS
+            <img src={focuslogo} alt="logo" width={200} height={60}/>
+          
           </a>
 
           <p className=' mt-5 font text-start'>

@@ -1,6 +1,6 @@
 // src/LandingPage.js
 import React,{useRef,useState} from 'react';
-import backgroundImage from '../assets/landing_page2.jpg'
+import backgroundImage from '../assets_backup/landing_page2.jpg'
 import Navbar from './Navbar';
 
 function LandingPage() {

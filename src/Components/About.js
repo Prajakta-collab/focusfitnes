@@ -28,7 +28,7 @@ const About = () => {
 
           <button className=' py-4 px-9 text-xl group relative text-white bg-[orangered] rounded-sm'>
             <div className=' buttonDiv'></div>
-            <span className='buttonSpan'>BECOME A MEMBER</span>
+            <span className='buttonSpan'>ENQUIRE NOW!</span>
           </button>
 
         </div>
