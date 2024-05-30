@@ -28,6 +28,20 @@ export const navLinks = [
     {label:"Enquiry",href:"#contact"}
 ]
 
+export const clientNavLinks = [
+   
+    {label:"Track",href:"#track"},
+    {label:"Files", href:"#files"},
+    {label:"Feedback",href:"#feedback"},
+
+
+{  /*  {label:"Merchandise",href:"#merchandise"},*/},
+   // {label:"Schedule",href:"#schedule"},
+    // {label:"Gallery",href:"#gallery"},
+    // {label:"Blog",href:"#blog"},
+]
+
+
 export const services = [
     {
         icon:<CiDumbbell />,
@@ -137,14 +151,5 @@ export const footer = [
             {link:"Sunday 11am-6pm"}
         ]
     },
-    {
-        title:"RESOURCES",
-        footerLinks:[
-            {link:"Home Insurance"},
-            {link:"Travel Insurance"},
-            {link:"Car Insurance"},
-            {link:"Business Insurance"},
-            {link:"Heal Insurance"}
-        ]
-    }
+    
 ]

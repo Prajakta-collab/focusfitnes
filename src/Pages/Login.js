@@ -3,9 +3,12 @@ import React from 'react';
 import img7 from '../assets/img-7.jpg'
 import logolight from '../assets/Logo-Light.png';
 import logodark from '../assets/Logo-Dark.png'
+import { useNavigation } from 'react-router-dom';
 
 
-function Login() {
+const Login=() =>{
+
+
     return (
         <div className="flex min-h-screen flex-col md:flex-row">
           {/* Left Side with Background Image */}
@@ -59,8 +62,8 @@ function Login() {
                 </div>
                 <div className="mb-6">
                   <button
-                    type="submit"
-                    className="w-full bg-orange-500 text-white py-2 px-4 rounded-md hover:bg-orange-600 transition duration-300"
+                    className="w-full bg-[orangered] text-white py-2 px-4 rounded-md hover:bg-orange-600 transition duration-300"
+                    
                   >
                     Login
                   </button>

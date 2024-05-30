@@ -12,10 +12,16 @@ import Blog from '../Components/Blog'
 import Footer from '../Components/Footer'
 import HeroSection from '../Components/HeroSection'
 import LandingPage from '../components_backup/LandingPage'
+import { navLinks } from '../Data/Data';
+import { useSelector, useDispatch } from 'react-redux';
+import { increment,decrement } from '../Redux/Slice/AuthSlice';
+
 
 function Home() {
 
-  
+  const dispatch=useDispatch();
+
+  console.log(dispatch(increment()))
   const [nav,setNav] = useState(false)
 
   window.addEventListener("scroll",()=>{
@@ -30,7 +36,7 @@ function Home() {
 
   return (
     <div>
-    <Nav nav={nav}/>
+    <Nav nav={nav} navLinks={navLinks}/>
     <HeroSection />
     <About />
     <Services />
