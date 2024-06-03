@@ -1,6 +1,5 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { increment } from '../Redux/Slice/AuthSlice';
 import { useDispatch,useSelector } from 'react-redux';
 
 const HeroSection = () => {
@@ -8,10 +7,7 @@ const HeroSection = () => {
   const count = useSelector((state) => state.auth.value);
 
 
-  const onbtnclick=()=>{
-dispatch(increment())
-
-  }
+  
   
   return (
     <section id='home' className=' w-screen min-h-screen bg-hero-pattern bg-cover bg-fixed bg-left max-sm:bg-center max-lg:bg-center'>
@@ -31,7 +27,7 @@ dispatch(increment())
 
         <button className=' py-4 px-7 text-xl group relative text-white bg-[orangered] rounded-sm'>
           <div className=' buttonDiv'></div>
-          <span className='buttonSpan' onClick={onbtnclick}><a href='#contact'>Enquire Now !</a></span>
+          <span className='buttonSpan' ><a href='#contact'>Enquire Now !</a></span>
         </button>
       </motion.div>
     </section>

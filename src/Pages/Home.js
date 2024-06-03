@@ -14,14 +14,12 @@ import HeroSection from '../Components/HeroSection'
 import LandingPage from '../components_backup/LandingPage'
 import { navLinks } from '../Data/Data';
 import { useSelector, useDispatch } from 'react-redux';
-import { increment,decrement } from '../Redux/Slice/AuthSlice';
 
 
 function Home() {
 
   const dispatch=useDispatch();
 
-  console.log(dispatch(increment()))
   const [nav,setNav] = useState(false)
 
   window.addEventListener("scroll",()=>{

@@ -1,14 +1,39 @@
 // src/App.js
-import React from 'react';
+import React ,{useState} from 'react';
 import img7 from '../assets/img-7.jpg'
 import logolight from '../assets/Logo-Light.png';
 import logodark from '../assets/Logo-Dark.png'
 import { useNavigation } from 'react-router-dom';
+import axios from 'axios';
 
 
 const Login=() =>{
 
+  const [email, setemail] = useState('');
+  const [password, setpassword] = useState('');
 
+  const data={
+    // username:"harsh@gmail.com",
+    // password:"demouser1"
+
+    token:"12bb4d21-f95f-4d67-9d0f-2ac3b0cc9b51"
+  };
+
+const onLogin=()=>{
+  fetch('http://localhost:8080/api/v1/auth/refreshToken', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept':"*"
+    },
+    body: JSON.stringify(data),
+  })
+  .then(response =>
+  console.log("res",response.json())
+)
+  .then(data => console.log('User created:', data))
+  .catch(error => console.error('Error creating user:', error));
+};
     return (
         <div className="flex min-h-screen flex-col md:flex-row">
           {/* Left Side with Background Image */}
@@ -63,7 +88,7 @@ const Login=() =>{
                 <div className="mb-6">
                   <button
                     className="w-full bg-[orangered] text-white py-2 px-4 rounded-md hover:bg-orange-600 transition duration-300"
-                    
+                    onClick={onLogin}
                   >
                     Login
                   </button>
