@@ -3,39 +3,85 @@ import React ,{useState} from 'react';
 import img7 from '../assets/img-7.jpg'
 import logolight from '../assets/Logo-Light.png';
 import logodark from '../assets/Logo-Dark.png'
-import { useNavigation } from 'react-router-dom';
+import { useNavigate, useNavigation } from 'react-router-dom';
 import axios from 'axios';
+import { setCredentials } from '../Credentials/creds';
+import Loader from '../Components/Loader';
 
 
 const Login=() =>{
 
+  const navigate = useNavigate();
   const [email, setemail] = useState('');
   const [password, setpassword] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [errortext, setErrortext] = useState('')
 
-  const data={
-    // username:"harsh@gmail.com",
-    // password:"demouser1"
+  
 
-    token:"12bb4d21-f95f-4d67-9d0f-2ac3b0cc9b51"
-  };
+const onLogin=(e)=>{
+  e.preventDefault();
 
-const onLogin=()=>{
-  fetch('http://localhost:8080/api/v1/auth/refreshToken', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Accept':"*"
-    },
-    body: JSON.stringify(data),
-  })
-  .then(response =>
-  console.log("res",response.json())
-)
-  .then(data => console.log('User created:', data))
-  .catch(error => console.error('Error creating user:', error));
-};
+  console.log("login got clicked")
+  // axios
+  // .post("http://localhost:8080/api/v1/auth/refreshToken", {
+  //   token: "12bb4d21-f95f-4d67-9d0f-2ac3b0cc9b51",
+  // })
+  // .then((res) => {
+  //   console.log(res);
+  // })
+  // .catch((err) => {
+  //   console.log("error", err);
+  // });
+
+  setLoading(true);
+
+  const instance = axios.create({
+    baseURL: 'http://localhost:8080/api/v1/auth/login', 
+      // Your Spring Boot backend
+});
+
+instance.post('',{
+  username:"harsh@gmail.com",
+  password:"demouser1"},{
+  headers: {
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin': '*'
+  }
+})
+.then(response => {
+  //Hide Loader
+  setLoading(false);
+  console.log('res',response)
+
+  // If server response message same as Data Matched
+  if (response?.data?.success === true ) {
+    console.log('Login Successful');
+    // console.log(responseJson);
+
+    //mmkv set storage
+   
+      setCredentials(response?.data?.token);
+      navigate('/clientdashboard');
+    
+   
+
+
+  } else {
+    console.log("error_msg",response?.data?.message);
+    setErrortext(response.data.message);
+  }
+})
+.catch(error => {
+  //Hide Loader
+  setLoading(false);
+  console.error(error);
+});
+}
+
     return (
         <div className="flex min-h-screen flex-col md:flex-row">
+        <Loader loading={loading}/>
           {/* Left Side with Background Image */}
           <div className="w-full md:w-1/2 bg-black relative hidden md:block">
             <img
