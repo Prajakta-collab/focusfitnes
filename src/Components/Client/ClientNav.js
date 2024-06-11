@@ -1,18 +1,17 @@
-import React, { useState } from 'react';
-import logo from "../assets/logo-2.png";
-import focuslogo from "../assets/Logo-Dark.png";
-import { navLinks } from '../Data/Data';
+import react,{useState} from 'react';
+import logo from "../../assets/logo-2.png";
+import focuslogo from '../../assets/Logo-Dark.png'
 import { FiMenu } from "react-icons/fi";
 import { IoClose } from "react-icons/io5";
 import { useNavigate } from 'react-router-dom';
 
-const Nav = ({ type,nav ,navLinks}) => {
+const ClientNav = ({ nav ,navLinks}) => {
   const [openNav, setOpenNav] = useState(false);
   const navigate = useNavigate();
 
   const navigateLogin = () => {
     
-    navigate('/login');
+    navigate('/attendace');
   };
 
   return (
@@ -23,11 +22,11 @@ const Nav = ({ type,nav ,navLinks}) => {
         </a>
 
         <ul className={`flex flex-1 justify-end gap-10 max-xl:gap-7 max-lg:flex-col max-lg:bg-stone-700 max-lg:text-white max-lg:pt-10 max-lg:pb-3 max-lg:px-4 max-lg:gap-4 max-lg:absolute max-lg: max-lg:top-24 max-lg:left-[5%] max-lg:w-[90%] max-lg:z-20 max-sm:top-20 ${openNav ? 'max-lg:block' : 'max-lg:hidden'}`}>
-          {navLinks.map((val) => (
-            <li key={val.label} className={`text-white font-medium hover:text-red-500 text-xl max-lg:text-lg`}><a href={val.href}>{val.label}</a></li>
+          {navLinks.map((val, key) => (
+            <li key={key} className={`text-white font-medium hover:text-red-500 text-xl max-lg:text-lg`}><a href={val.href}>{val.label}</a></li>
           ))}
           <li className='text-white font-medium hover:text-red-500 text-xl max-lg:text-lg'>
-            <button className='py-4 px-7 text-xl group relative text-white bg-[orangered] rounded-sm' onClick={navigateLogin}>{type=='user'?'Attendance':'Login'}</button>
+            <button className='py-4 px-7 text-xl group relative text-white bg-[orangered] rounded-sm' onClick={navigateLogin}>Attendance</button>
           </li>
         </ul>
 
@@ -39,4 +38,4 @@ const Nav = ({ type,nav ,navLinks}) => {
   );
 }
 
-export default Nav;
+export default ClientNav;

@@ -1,8 +1,8 @@
 import React, { useEffect,useState } from "react";
 import { FaCalendarDay, FaFire } from "react-icons/fa";
-import { getCredentials } from "../Credentials/creds";
+import { getCredentials } from "../../Credentials/creds";
 import axios from "axios";
-import { baseUrl } from "../configs/urlConfigs";
+import { baseUrl } from "../../configs/urlConfigs";
 
 const Track = () => {
 

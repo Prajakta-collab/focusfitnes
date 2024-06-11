@@ -12,7 +12,7 @@ const Files = () => {
               <FaFileAlt className="text-3xl text-gray-600 mr-4" />
               <span className="text-lg  font-sans">DietPlan.pdf</span>
             </div>
-            <button className="flex items-center px-5 py-2 bg-[#f04e3c] text-white rounded-md hover:bg-blue-600 text-xl ml-7 font-sans" >
+            <button className="flex items-center px-5 py-2 bg-[#f04e3c] text-white rounded-md hover:bg-gray-400 text-xl ml-7 font-sans" >
               <FaDownload className="mr-2" /> Download
             </button>
           </div>

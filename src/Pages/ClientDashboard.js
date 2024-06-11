@@ -1,12 +1,11 @@
 import React,{useState} from 'react'
 import { clientNavLinks} from '../Data/Data';
-import Nav from '../Components/Nav';
-import HeroSection from '../Components/HeroSection';
-import Feedback from '../Components/Feedback';
+import Feedback from '../Components/Client/Feedback';
 import Footer from '../Components/Footer';
-import Track from '../Components/Track';
+import Track from '../Components/Client/Track';
 import Files from '../Components/Files';
-import PersonalTraining from '../Components/PersonalTraining';
+import PersonalTraining from '../Components/Client/PersonalTraining';
+import ClientNav from '../Components/Client/ClientNav';
 
 const ClientDashboard=()=> {
     const [nav,setNav] = useState(false)
@@ -23,7 +22,7 @@ const ClientDashboard=()=> {
 
   return (
     <div>
-      <Nav type="user" nav="true" navLinks={clientNavLinks}/>
+      <ClientNav nav="true" navLinks={clientNavLinks}/>
       <Track/>
       <PersonalTraining/>
       <Files/>
