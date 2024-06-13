@@ -28,11 +28,12 @@ export const navLinks = [
     {label:"Enquiry",href:"#contact"}
 ]
 
-export const clientNavLinks = [
-   
-    {label:"Track",href:"#track"},
-    {label:"Files", href:"#files"},
-    {label:"Feedback",href:"#feedback"},
+export const staffNavLinks= [
+    {label:"Home",href:"/staffdashboard"},
+
+    {label:"Members",href:"/members"},
+    {label:"Expenses", href:"/expenses"},
+
 
 
 {  /*  {label:"Merchandise",href:"#merchandise"},*/},
@@ -41,6 +42,15 @@ export const clientNavLinks = [
     // {label:"Blog",href:"#blog"},
 ]
 
+export const clientNavLinks = [
+   
+    {label:"Track",href:"#track"},
+    {label:"Files", href:"#files"},
+    {label:"Feedback",href:"#feedback"},
+
+
+
+]
 
 export const services = [
     {

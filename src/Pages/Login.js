@@ -1,4 +1,3 @@
-// src/App.js
 import React, { useState } from 'react';
 import img7 from '../assets/img-7.jpg';
 import logolight from '../assets/Logo-Light.png';
@@ -21,6 +20,7 @@ const Login = () => {
   const [formValues, setFormValues] = useState({
     email: '',
     password: '',
+    usertype: 'ROLE_USER'
   });
 
   const handleChange = (e) => {
@@ -29,6 +29,8 @@ const Login = () => {
       ...formValues,
       [name]: value,
     });
+
+    console.log("name ", name + " value ", value);
   };
 
   const togglePasswordVisibility = () => {
@@ -39,6 +41,7 @@ const Login = () => {
     e.preventDefault();
 
     console.log("login got clicked");
+    console.log("body", formValues);
     setLoading(true);
 
     const instance = axios.create({
@@ -52,38 +55,50 @@ const Login = () => {
     instance.post('', {
       username: formValues.email,
       password: formValues.password,
+      usertype: formValues.usertype
     })
-    .then(response => {
-      setLoading(false);
-      console.log('res', response);
+      .then(response => {
+        setLoading(false);
+        console.log('res', response);
 
-      if (response?.status === 200) {
-        if (response?.data?.success === true) {
-          console.log('Login Successful');
-          setCredentials(response?.data?.token);
-          navigate('/clientdashboard');
+        if (response?.status === 200) {
+          if (response?.data?.success === true) {
+            console.log('Login Successful');
+            setCredentials(response?.data?.token);
+
+            if(formValues.usertype=='ROLE_USER'){
+              navigate('/clientdashboard');
+
+            }else if(formValues.usertype=='ROLE_STAFF'){
+              navigate('/staffdashboard');
+
+            }else if(formValues.usertype=='ROLE_ADMIN'){
+              navigate('/admindashboard');
+
+            }
+
+          } else {
+            console.log("error_msg", response?.data?.message);
+            setErrortext(response?.data?.message || "Unexpected error occurred");
+          }
         } else {
-          console.log("error_msg", response?.data?.message);
-          setErrortext(response?.data?.message || "Unexpected error occurred");
+          console.log("Unexpected status code", response?.status);
+          setErrortext(`Unexpected status code: ${response?.status}`);
         }
-      } else {
-        console.log("Unexpected status code", response?.status);
-        setErrortext(`Unexpected status code: ${response?.status}`);
-      }
-    })
-    .catch(error => {
-      setLoading(false);
-      if (error.response) {
-        console.error("Server responded with an error", error.response);
-        setErrortext(error.response?.data?.message || "Server error occurred");
-      } else if (error.request) {
-        console.error("No response received from server", error.request);
-        setErrortext("No response received from server");
-      } else {
-        console.error("Error setting up request", error.message);
-        setErrortext("Error setting up request: " + error.message);
-      }
-    });
+      })
+      .catch(error => {
+        setLoading(false);
+        if (error.response) {
+          console.error("Server responded with an error", error.response);
+          setErrortext(error.response?.data?.message || "Server error occurred");
+        } else if (error.request) {
+          console.error("No response received from server", error.request);
+          setErrortext("No response received from server");
+        } else {
+          console.error("Error setting up request", error.message);
+          setErrortext("Error setting up request: " + error.message);
+        }
+      });
   };
 
   return (
@@ -148,6 +163,24 @@ const Login = () => {
                 <FontAwesomeIcon className="pt-6" icon={showPassword ? faEye : faEyeSlash} />
               </span>
             </div>
+            <div className="mb-4">
+              <label className="block text-gray-700">User Type</label>
+              <select
+                name="usertype"
+                value={formValues.usertype}
+                onChange={handleChange}
+                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
+              >
+                <option value="ROLE_ADMIN">Admin</option>
+                <option value="ROLE_USER">Client</option>
+                <option value="ROLE_STAFF">Staff</option>
+              </select>
+            </div>
+            {errortext && (
+              <div className="mb-4 text-red-500">
+                {errortext}
+              </div>
+            )}
             <div className="mb-6">
               <button
                 className="w-full bg-[orangered] text-white py-2 px-4 rounded-md hover:bg-orange-600 transition duration-300"

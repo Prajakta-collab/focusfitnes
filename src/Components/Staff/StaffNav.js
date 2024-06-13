@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import focuslogo from "../assets/Logo-Dark.png";
+import focuslogo from "../../assets/Logo-Dark.png"
 import { FiMenu } from "react-icons/fi";
 import { IoClose } from "react-icons/io5";
 import { useNavigate } from 'react-router-dom';
 
-const Nav = ({ type,nav ,navLinks}) => {
+const StaffNav = ({ type,nav ,navLinks}) => {
   const [openNav, setOpenNav] = useState(false);
   const navigate = useNavigate();
 
@@ -24,9 +24,9 @@ const Nav = ({ type,nav ,navLinks}) => {
           {navLinks.map((val) => (
             <li key={val.label} className={`text-white font-medium hover:text-red-500 text-xl max-lg:text-lg`}><a href={val.href}>{val.label}</a></li>
           ))}
-          <li className='text-white font-medium hover:text-red-500 text-xl max-lg:text-lg'>
+          {/*<li className='text-white font-medium hover:text-red-500 text-xl max-lg:text-lg'>
             <button className='py-4 px-7 text-xl group relative text-white bg-[orangered] rounded-sm' onClick={navigateLogin}>{type=='user'?'Attendance':'Login'}</button>
-          </li>
+          </li>*/}
         </ul>
 
         <div className={`absolute right-[20px] translate-y-[-50%] text-2xl cursor-pointer top-[25px] ${openNav ? 'right-[20px]' : 'left-[20px]'}`} onClick={() => setOpenNav(!openNav)}>
@@ -37,4 +37,4 @@ const Nav = ({ type,nav ,navLinks}) => {
   );
 }
 
-export default Nav;
+export default StaffNav;
