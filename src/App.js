@@ -10,7 +10,7 @@ import { getCredentials } from './Credentials/creds';
 import Members from './Components/Members';
 import MemberProfile from './Components/MemberProfile';
 import AddMember from './Components/AddMember';
-import UserAttendance from './Components/Client/UserAttendance';
+import QRScanner from './Components/Common/QRScanner/QRScanner';
 
 
 const App = () => {
@@ -28,7 +28,7 @@ const App = () => {
       <Route path='/members' element={<Members/>}/>
       <Route path='/members/:id' element={<MemberProfile/>}/>
       <Route path='/members/add' element={<AddMember/>}/>
-      <Route path="/clientdashboard/attendace" element={<UserAttendance/>}/>
+      <Route path="/clientdashboard/attendance" element={<QRScanner/>}/>
       
 
 
