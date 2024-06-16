@@ -102,7 +102,7 @@ const Login = () => {
   };
 
   return (
-    <div className="flex min-h-screen flex-col md:flex-row">
+    <div className="flex min-h-screen flex-col md:flex-row ">
       <Loader loading={loading} />
       {/* Left Side with Background Image */}
       <div className="w-full md:w-1/2 bg-black relative hidden md:block">
@@ -123,7 +123,7 @@ const Login = () => {
       </div>
 
       {/* Right Side with Login Form */}
-      <div className="w-full md:w-1/2 flex flex-col items-center justify-center bg-white py-8">
+      <div className="w-full md:w-1/2 flex flex-col items-center justify-center bg-white py-8 ">
         <div className="w-full max-w-md p-8">
           {/* Logo on Mobile */}
           <div className="md:hidden mb-8 text-center">
@@ -133,13 +133,13 @@ const Login = () => {
               className="mx-auto mb-4"
             />
           </div>
-          <h2 className="text-3xl font-bold mb-6">Login</h2>
+          <h2 className="text-3xl font-bold mb-6 ">Login</h2>
           <form>
             <div className="mb-4">
-              <label className="block text-gray-700">Email</label>
+              <label className="block text-gray-700 font">Email</label>
               <input
                 type="email"
-                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
+                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 font"
                 placeholder="Enter your email"
                 value={formValues.email}
                 name="email"
@@ -147,10 +147,10 @@ const Login = () => {
               />
             </div>
             <div className="mb-4 relative">
-              <label className="block text-gray-700">Password</label>
+              <label className="block text-gray-700 font">Password</label>
               <input
                 type={showPassword ? "text" : "password"}
-                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
+                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 font"
                 placeholder="Enter your password"
                 name="password"
                 value={formValues.password}
@@ -164,16 +164,16 @@ const Login = () => {
               </span>
             </div>
             <div className="mb-4">
-              <label className="block text-gray-700">User Type</label>
+              <label className="block text-gray-700 font">User Type</label>
               <select
                 name="usertype"
                 value={formValues.usertype}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
+                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 font"
               >
-                <option value="ROLE_ADMIN">Admin</option>
-                <option value="ROLE_USER">Client</option>
-                <option value="ROLE_STAFF">Staff</option>
+                <option className="font" value="ROLE_ADMIN">Admin</option>
+                <option className="font" value="ROLE_USER">Client</option>
+                <option className="font" value="ROLE_STAFF">Staff</option>
               </select>
             </div>
             {errortext && (
@@ -183,14 +183,14 @@ const Login = () => {
             )}
             <div className="mb-6">
               <button
-                className="w-full bg-[orangered] text-white py-2 px-4 rounded-md hover:bg-orange-600 transition duration-300"
+                className="w-full bg-[orangered] text-white py-2 px-4 rounded-md hover:bg-orange-600 transition duration-300 font"
                 onClick={onLogin}
               >
                 Login
               </button>
             </div>
             <div className="text-center">
-              <a href="#" className="text-sm text-gray-600 hover:text-gray-800">
+              <a href="#" className="text-sm text-gray-600 hover:text-gray-800 font">
                 Forgot password?
               </a>
             </div>
