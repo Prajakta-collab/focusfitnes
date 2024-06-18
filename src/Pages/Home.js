@@ -22,7 +22,10 @@ import { baseUrl } from '../configs/urlConfigs';
 
 
 
-function Home() {  const navigate = useNavigate();
+function Home() {  
+
+  const [role, setrole] = useState('')
+  const navigate = useNavigate();
 
   const getUserRole=async()=>{
 
@@ -46,12 +49,13 @@ function Home() {  const navigate = useNavigate();
         if(response?.status===200){
           console.log(response?.data);
           if(response?.data?.roles[0]?.roleName=='ROLE_USER'){
-            navigate('/clientdashboard');
+           setrole('user')
           }
           else if(response?.data?.roles[0]?.roleName=='ROLE_STAFF'){
-            navigate('/staffdashboard')
+            setrole('staff')
           }else{
-            navigate('/admindashboard')
+            setrole('admin')
+
           }
         }
 
@@ -94,7 +98,7 @@ function Home() {  const navigate = useNavigate();
 
   return (
     <div>
-    <Nav nav={nav} navLinks={navLinks}/>
+    <Nav nav={nav} navLinks={navLinks} role={role}/>
     <HeroSection />
     <About />
     <Services />

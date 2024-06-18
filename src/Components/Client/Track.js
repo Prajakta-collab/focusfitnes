@@ -14,7 +14,7 @@ const Track = () => {
     try {
       const token = await getCredentials();
   
-      if (token) {
+     
         const response = await axios.get(`${baseUrl}/attendance`, {
           headers: {
             'Authorization': `Bearer ${token}`,
@@ -32,9 +32,7 @@ const Track = () => {
         console.log("Response:", response.data);
 
 
-      } else {
-        console.log("Error: Token not available.");
-      }
+     
     } catch (error) {
       console.error("Error:", error);
     }
