@@ -29,7 +29,9 @@ export const navLinks = [
 ]
 
 export const staffNavLinks= [
-    {label:"Home",href:"/staffdashboard"},
+    {label:"Dashboard",href:"/staffdashboard"},
+    {label:"Home",href:"/"},
+
 
     {label:"Members",href:"/members"},
     {label:"Expenses", href:"/expenses"},
@@ -43,6 +45,8 @@ export const staffNavLinks= [
 ]
 
 export const clientNavLinks = [
+    {label:"Dashboard",href:"/clientdashboard"},
+    {label:"Home",href:"/"},
    
     {label:"Track",href:"#track"},
     {label:"Files", href:"#files"},

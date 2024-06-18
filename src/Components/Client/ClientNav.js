@@ -4,14 +4,52 @@ import focuslogo from '../../assets/Logo-Dark.png'
 import { FiMenu } from "react-icons/fi";
 import { IoClose } from "react-icons/io5";
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { getCredentials, removeCredentials } from '../../Credentials/creds';
+import { baseUrl } from '../../configs/urlConfigs';
 
 const ClientNav = ({ nav ,navLinks}) => {
   const [openNav, setOpenNav] = useState(false);
   const navigate = useNavigate();
 
-  const navigateLogin = () => {
+  const navigateAttendance = () => {
     
     navigate('/clientdashboard/attendance');
+  };
+
+  const handleLogout = async () => {
+    const token = await getCredentials();
+
+    try {
+      const response = await axios.post(
+        `${baseUrl}/auth/logout`,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Access-Control-Allow-Origin": "*",
+
+            // This header is typically set on the server side, not in client requests
+          },
+        }
+      );
+
+      if (response?.status === 200) {
+        console.log("Response:", response.data);
+
+        //remove token from local storage
+        removeCredentials();
+
+        //navigate to login page
+        navigate("/login");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
+
+    // Add logout logic here
+
+    console.log("Logout clicked");
   };
 
   return (
@@ -26,8 +64,11 @@ const ClientNav = ({ nav ,navLinks}) => {
             <li key={key} className={`text-white font-medium hover:text-red-500 text-xl max-lg:text-lg`}><a href={val.href}>{val.label}</a></li>
           ))}
           <li className='text-white font-medium hover:text-red-500 text-xl max-lg:text-lg'>
-            <button className='py-4 px-7 text-xl group relative text-white bg-[orangered] rounded-sm' onClick={navigateLogin}>Attendance</button>
+            <button className='py-4 px-7 text-xl group relative text-white bg-[orangered] rounded-sm' onClick={navigateAttendance}>Attendance</button>
           </li>
+          <li className='text-white font-medium hover:text-red-500 text-xl max-lg:text-lg'>
+          <button className='py-4 px-7 text-xl group relative text-white bg-[orangered] rounded-sm' onClick={handleLogout}>Logout</button>
+        </li>
         </ul>
 
         <div className={`absolute right-[20px] translate-y-[-50%] text-2xl cursor-pointer top-[25px] ${openNav ? 'right-[20px]' : 'left-[20px]'}`} onClick={() => setOpenNav(!openNav)}>

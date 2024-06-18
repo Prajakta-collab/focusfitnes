@@ -59,7 +59,7 @@ getStaffDashboardDetails()
     <div className=''>
     <StaffNav nav="true" navLinks={staffNavLinks}/>
     <TimeTracker/>
-    <StaffDashboardDetails details={details}/>
+    <StaffDashboardDetails dueMembers={details?.dueMembers} totalMembers={details?.totalMembers} expireInNext3Days={details?.expireInNext3Days}  attendanceToday={details?.attendanceToday}/>
     <Concern/>
     <Footer/>
     </div>

@@ -67,7 +67,7 @@ const MembersPage = () => {
     }
   };
   useEffect(()=>{
-fetchAllMembers()
+//fetchAllMembers()
   },[])
 
   const addMember=()=>{
@@ -100,7 +100,7 @@ fetchAllMembers()
             </tr>
           </thead>
           <tbody className="bg-white divide-y divide-gray-200 font">
-            {allMembers
+            {membersData
               ?.filter((member) => (member?.firstName+" "+member?.lastName).toLowerCase().includes(searchTerm.toLowerCase()))
               ?.map((member) => (
                 <MemberRow key={member.id} member={member} onClick={handleMemberClick} />

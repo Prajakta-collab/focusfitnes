@@ -145,3 +145,11 @@ export async function getRefreshToken(username) {
   }
 }
 
+export const removeCredentials = () => {
+  try {
+    // Save tokens to localStorage
+    localStorage.removeItem('token');
+  } catch (e) {
+    console.log(e);
+  }
+};
