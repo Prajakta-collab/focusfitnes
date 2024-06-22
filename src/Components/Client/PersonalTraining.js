@@ -6,22 +6,15 @@ const PersonalTraining = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // const fetchTrainingData = async () => {
-    //   try {
-    //     const response = await fetch('API_URL_HERE'); // Replace with your API URL
-    //     if (!response.ok) {
-    //       throw new Error('Network response was not ok');
-    //     }
-    //     const data = await response.json();
-    //     setTrainingData(data);
-    //   } catch (error) {
-    //     setError(error);
-    //   } finally {
-    //     setLoading(false);
-    //   }
-    // };
+    // Dummy data to simulate fetching from an API
+    const dummyData = [
+      { date: '2023-06-18', timeIn: '07:00 AM', timeOut: '08:00 AM', workout: 'Cardio' },
+      { date: '2023-06-19', timeIn: '07:30 AM', timeOut: '08:30 AM', workout: 'Strength Training' },
+      { date: '2023-06-20', timeIn: '06:45 AM', timeOut: '07:45 AM', workout: 'Yoga' },
+    ];
 
-    // fetchTrainingData();
+    setTrainingData(dummyData);
+    setLoading(false);
   }, []);
 
   if (loading) {
